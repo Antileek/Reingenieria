@@ -1,0 +1,35 @@
+<div class="card">
+  <h1>Productos</h1>
+  <p-table [value]="productos">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id">Id <p-sortIcon field="id">ID</p-sortIcon></th>
+        <th pSortableColumn="fecha">
+          Ingreso <p-sortIcon field="fecha"></p-sortIcon>
+        </th>
+        <th pSortableColumn="nombre">
+          Nombre <p-sortIcon field="nombre"></p-sortIcon>
+        </th>
+        <th pSortableColumn="peso">
+          Peso <p-sortIcon field="peso"></p-sortIcon>
+        </th>
+        <th pSortableColumn="costo">
+          Costo <p-sortIcon field="costo"></p-sortIcon>
+        </th>
+        <th pSortableColumn="descripcion">
+          Descripcion <p-sortIcon field="descripcion"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-producto>
+      <tr>
+        <td>{{ producto.ID }}</td>
+        <td>{{ producto.Fecha }}</td>
+        <td>{{ producto.Nombre }}</td>
+        <td>{{ producto.Peso }}</td>
+        <td>{{ producto.Costo | currency: "MXN" }}</td>
+        <td>{{ producto.Descripcion }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

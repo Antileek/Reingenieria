@@ -1,0 +1,44 @@
+<h1>Agregar producto</h1>
+<form
+  class="flex card justify-content-center align-items-center flex-column"
+  style="height: 85%"
+  (ngSubmit)="agregar()"
+>
+  <div>
+    <div class="field">
+      <label for="nombre">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="peso">Peso</label>
+      <input
+        id="peso"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="costo">Costo</label>
+      <input
+        id="costo"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="descripcion">Descripcion</label>
+      <input
+        id="descripcion"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="mx-auto">
+    <button type="submit" pButton label="Agregar"></button>
+  </div>
+</form>
