@@ -1,10 +1,13 @@
 export interface Producto {
   ID?: number;
-  IdProveedor: number;
-  Fecha : Date;
-  Peso: number;
-  Costo: number;
+  IdProveedor: string;
+  FechaDeIngreso?: Date;
+  FechaDeCaducidad : Date;
+  Cantidad: number;
+  PesoUnitario: number;
+  CostoUnitario: number;
+  PrecioDeVenta: number;
   Nombre: string;
   Descripcion: string;
-  EstadoProducto: string;
+  EstadoProducto: number;
 }

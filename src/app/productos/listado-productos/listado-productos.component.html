@@ -5,30 +5,50 @@
       <tr>
         <th pSortableColumn="id">Id <p-sortIcon field="id">ID</p-sortIcon></th>
         <th pSortableColumn="fecha">
-          Ingreso <p-sortIcon field="fecha"></p-sortIcon>
+          Proveedor <p-sortIcon field="fecha"></p-sortIcon>
         </th>
         <th pSortableColumn="nombre">
           Nombre <p-sortIcon field="nombre"></p-sortIcon>
         </th>
-        <th pSortableColumn="peso">
-          Peso <p-sortIcon field="peso"></p-sortIcon>
+        <th pSortableColumn="fechaCaducidad">
+          Fecha de caducidad <p-sortIcon field="fechaCaducidad"></p-sortIcon>
         </th>
-        <th pSortableColumn="costo">
-          Costo <p-sortIcon field="costo"></p-sortIcon>
+        <th pSortableColumn="cantidad">
+          Cantidad <p-sortIcon field="cantidad"></p-sortIcon>
         </th>
-        <th pSortableColumn="descripcion">
-          Descripcion <p-sortIcon field="descripcion"></p-sortIcon>
+        <th pSortableColumn="pesoUnitario">
+          Peso Unitario <p-sortIcon field="pesoUnitario"></p-sortIcon>
+        </th>
+        <th pSortableColumn="costoUnitario">
+          Costo Unitario <p-sortIcon field="costoUnitario"></p-sortIcon>
+        </th>
+        <th pSortableColumn="precioVenta">
+          Precio de venta <p-sortIcon field="precioVenta"></p-sortIcon>
+        </th>
+        <th pSortableColumn="estadoProducto">
+          Estado del Producto(s) <p-sortIcon field="estadoProducto"></p-sortIcon>
+        </th>
+        <th pSortableColumn="editarProducto">
+          Editar producto <p-sortIcon field="editarProducto"></p-sortIcon>
+        </th>
+        <th pSortableColumn="calcularPrecio">
+          Calcular Precio recomendado <p-sortIcon field="calcularPrecio"></p-sortIcon>
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-producto>
       <tr>
         <td>{{ producto.ID }}</td>
-        <td>{{ producto.Fecha }}</td>
+        <td>{{ producto.IdProveedor }}</td>
         <td>{{ producto.Nombre }}</td>
-        <td>{{ producto.Peso }}</td>
-        <td>{{ producto.Costo | currency: "MXN" }}</td>
-        <td>{{ producto.Descripcion }}</td>
+        <td>{{ producto.FechaDeCaducidad | date}}</td>
+        <td>{{ producto.Cantidad}}</td>
+        <td>{{ producto.PesoUnitario}}</td>
+        <td>{{ producto.CostoUnitario}}</td>
+        <td>{{ producto.PrecioDeVenta | currency: "MXN" }}</td>
+        <td>{{ estadoProducto(producto.EstadoProducto) }}</td>
+        <th><a [routerLink]="['../precio/', producto.ID]" >Precio</a></th>
+        <th><button (click)="eliminarProducto(producto.ID)"  pButton pRipple type="button" label="Eliminar" class="p-button-rounded p-button-danger"></button></th>
       </tr>
     </ng-template>
   </p-table>

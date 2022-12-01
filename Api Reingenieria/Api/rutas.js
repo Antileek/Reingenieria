@@ -3,7 +3,7 @@ const conexion = require('./config/conexion');
 
 //get cria total
 router.get('/productos',(req,res) =>{
-    let sql = 'select * from Producto';
+    let sql = 'select * from producto';
     conexion.query(sql,(err,rows,fields) =>
     {
         if(err)
@@ -15,7 +15,7 @@ router.get('/productos',(req,res) =>{
 //Get by Id
 router.get('/productos/:id',(req, res)=>{
     const {id} = req.params;
-    let sql =`select * from Producto where ID = ${id}`;
+    let sql =`select * from producto where ID = ${id}`;
     conexion.query(sql,(err, rows, fields)=>{
 
         if(err) 
@@ -27,10 +27,10 @@ router.get('/productos/:id',(req, res)=>{
 
 //Registrar Producto
 router.post('/productos',( req, res)=>{
-    const{id_proveedor,fecha, peso, costo, nombre, descripcion, estado_producto} = req.body
-    let sql = `insert into Producto (IdProveedor,Fecha, Peso, Costo, Nombre, Descripcion, EstadoProducto) 
+    const{IdProveedor,FechaDeCaducidad, Cantidad, PesoUnitario, CostoUnitario, PrecioDeVenta, Nombre, Descripcion, EstadoProducto} = req.body
+    let sql = `insert into producto (IdProveedor, FechaDeCaducidad, Cantidad, PesoUnitario, CostoUnitario, PrecioDeVenta, Nombre, Descripcion, EstadoProducto) 
     values 
-    ('${id_proveedor}}','${fecha}', '${peso}', '${costo}', '${nombre}', '${descripcion}', '${estado_producto}')`;
+    ('${IdProveedor}', '${FechaDeCaducidad}', '${Cantidad}', '${PesoUnitario}', '${CostoUnitario}', '${PrecioDeVenta}','${Nombre}', '${Descripcion}', '${EstadoProducto}')`;
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
             throw err;
@@ -42,7 +42,7 @@ router.post('/productos',( req, res)=>{
 //Delete Producto 
 router.delete('/productos/:id',(req, res)=>{
     const{id} = req.params;
-    let sql =`delete from Producto where ID = '${id}'`;
+    let sql =`delete from producto where ID = '${id}'`;
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
             throw err;
@@ -55,14 +55,18 @@ router.delete('/productos/:id',(req, res)=>{
 //Update Producto
 router.put('/productos/:id',(req,res)=>{
     const{id} = req.params;
-    const{nombre,id_proveedor,peso,costo,descripcion,estado_producto} = req.body
+    //(IdProveedor, FechaDeIngreso, FechaDeCaducidad, Cantidad, PesoUnitario, CostoUnitario, PrecioDeVenta, Nombre, Descripcion, EstadoProducto) 
+    const{Cantidad, PesoUnitario, CostoUnitario, PrecioDeVenta, Nombre, Descripcion, EstadoProducto} = req.body
     let sql = `update Producto set 
-    Nombre = '${nombre}',
-    IdProveedor = ${id_proveedor},
+    Nombre = '${Nombre}',
+    IdProveedor = ${IdProveedor},
     Peso = ${peso},
-    Costo = ${costo},
-    Descripcion = '${descripcion}',
-    EstadoProducto = '${estado_producto}'
+    Cantidad = ${Cantidad},
+    PesoUnitario = ${PesoUnitario},
+    PrecioDeVenta = ${PrecioDeVenta},
+    CostoUnitario = ${CostoUnitario},
+    Descripcion = '${Descripcion}',
+    EstadoProducto = '${EstadoProducto}'
     where ID = '${id}'`
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
@@ -75,8 +79,8 @@ router.put('/productos/:id',(req,res)=>{
 //Proveedores
 
 //get Proveedor total
-router.get('/proveedor',(req,res) =>{
-    let sql = 'select * from Proveedor';
+router.get('/proveedores',(req,res) =>{
+    let sql = 'select * from proveedor';
     conexion.query(sql,(err,rows,fields) =>
     {
         if(err)
@@ -86,9 +90,9 @@ router.get('/proveedor',(req,res) =>{
 })
 
 //Get by Id
-router.get('/proveedor/:id',(req, res)=>{
+router.get('/proveedores/:id',(req, res)=>{
     const {id} = req.params;
-    let sql =`select * from Proveedor where ID = ${id}`;
+    let sql =`select * from proveedor where ID = ${id}`;
     conexion.query(sql,(err, rows, fields)=>{
 
         if(err) 
@@ -99,9 +103,9 @@ router.get('/proveedor/:id',(req, res)=>{
 })
 
 //Registrar Proveedor
-router.post('/proveedor',( req, res)=>{
-    const{nombre} = req.body
-    let sql = `insert into Proveedor (Nombre) values ('${nombre}')`;
+router.post('/proveedores',( req, res)=>{
+    const{Nombre,NumeroContacto} = req.body
+    let sql = `insert into proveedor (Nombre, NumeroContacto) values ('${Nombre}','${NumeroContacto}')`;
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
             throw err;
@@ -111,9 +115,9 @@ router.post('/proveedor',( req, res)=>{
 })
 
 //Delete Proveedor 
-router.delete('/proveedor/:id',(req, res)=>{
+router.delete('/proveedores/:id',(req, res)=>{
     const{id} = req.params;
-    let sql =`delete from Proveedor where ID = '${id}'`;
+    let sql =`delete from proveedor where ID = '${id}'`;
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
             throw err;
@@ -124,10 +128,10 @@ router.delete('/proveedor/:id',(req, res)=>{
 });
 
 //Update Proveedor
-router.put('/proveedor/:id',(req,res)=>{
+router.put('/proveedores/:id',(req,res)=>{
     const{id} = req.params;
-    const{nombre} = req.body;
-    let sql = `update Proveedor set Nombre = '${nombre}' where ID = ${id}`
+    const{nombre,NumeroContacto} = req.body;
+    let sql = `update proveedor set Nombre = '${nombre}', NumeroContacto = '${NumeroContacto}' where ID = ${id}`
     conexion.query(sql, (err, rows, fields)=>{
         if(err) 
             throw err;

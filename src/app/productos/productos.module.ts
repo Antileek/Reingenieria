@@ -8,6 +8,8 @@ import { DetallesProductoComponent } from './detalles-producto/detalles-producto
 import { ListadoProductosComponent } from './listado-productos/listado-productos.component';
 import { ProductosRoutingModule } from './productos-routing.module';
 import { ProductosComponent } from './productos.component';
+import { PrecioProductoComponent } from './precio-producto/precio-producto.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,8 @@ import { ProductosComponent } from './productos.component';
     ListadoProductosComponent,
     DetallesProductoComponent,
     AgregarProductoComponent,
+    PrecioProductoComponent,
   ],
-  imports: [CommonModule, ProductosRoutingModule, PrimengModule, FormsModule],
+  imports: [CommonModule, ProductosRoutingModule, PrimengModule, FormsModule, RouterModule],
 })
 export class ProductosModule {}

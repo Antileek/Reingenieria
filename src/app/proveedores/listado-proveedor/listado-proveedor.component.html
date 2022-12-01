@@ -1,0 +1,23 @@
+<div class="card">
+    <h1>Proveedores</h1>
+    <p-table [value]="proveedores">
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="id">Id <p-sortIcon field="id">ID</p-sortIcon></th>
+          <th pSortableColumn="nombre">
+            Nombre <p-sortIcon field="nombre"></p-sortIcon>
+          </th>
+          <th pSortableColumn="NumeroContacto">
+            Numero de contacto <p-sortIcon field="descripcion"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-proveedor>
+        <tr>
+          <td>{{ proveedor.ID }}</td>
+          <td>{{ proveedor.Nombre }}</td>
+          <td>{{ proveedor.NumeroContacto }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>

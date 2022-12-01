@@ -25,10 +25,26 @@ export class NavBarComponent implements OnInit {
           {
             label: 'Agregar',
             icon: 'pi pi-user-plus',
-            routerLink: 'productos/agregar',
+            routerLink: '/productos/agregar',
           },
         ],
       },
+      {
+        label: 'Proovedores',
+        icon: 'pi pi-box',
+        items: [
+          {
+            label: 'Listado',
+            icon: 'pi pi-list',
+            routerLink: '/proveedores/listado',
+          },
+          {
+            label: 'Agregar',
+            icon: 'pi pi-user-plus',
+            routerLink: 'proveedores/agregar',
+          },
+        ],
+      }
     ];
   }
 }

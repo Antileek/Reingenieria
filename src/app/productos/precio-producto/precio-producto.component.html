@@ -1,0 +1,10 @@
+
+<div class="surface-card p-4 shadow-2 border-round">
+    <div class="text-3xl font-medium text-900 mb-3">{{producto.Nombre}}, Cantidad: {{producto.Cantidad}}</div>
+    <div *ngIf="producto.Cantidad > 11" class="font-medium text-500 mb-3">Precio recomendado por Mayoreo: {{(descuentoMayoreo) | number: '1.2-2'}}</div>
+    <div *ngIf="descuentoCaducidad > 0" class="font-medium text-500 mb-3">Precio recomendado por Caducidad: {{(descuentoCaducidad) | number: '1.2-2'}}</div>
+    <div *ngIf="producto.EstadoProducto != 1"class="font-medium text-500 mb-3">Descuento recomendado por Estado del producto: {{(producto.PrecioDeVenta * producto.EstadoProducto) | number: '1.2-2'}}</div>
+    
+    <div style="height: 24px" class="border-2 border-dashed surface-border">Precio rendimiento: {{(precioRendimientos) | number: '1.2-2'}}</div>
+    <div *ngIf="descuentoCaducidad > 0" style="height: 24px" class="border-2 border-dashed surface-border">El producto esta cercano a llegar a su fecha de caducidad. Restan {{diasCaducar}} dias</div>
+</div>  

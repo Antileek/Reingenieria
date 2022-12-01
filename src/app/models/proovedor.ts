@@ -1,4 +1,5 @@
-export interface Proovedor {
-  id?: number;
-  nombre: string;
+export interface Proveedor {
+  ID?: number;
+  Nombre: string;
+  NumeroContacto: string;
 }

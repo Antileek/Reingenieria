@@ -1,8 +1,7 @@
 <h1>Agregar producto</h1>
-<form
+<div
   class="flex card justify-content-center align-items-center flex-column"
   style="height: 85%"
-  (ngSubmit)="agregar()"
 >
   <div>
     <div class="field">
@@ -10,22 +9,57 @@
       <input
         id="nombre"
         type="text"
+        [(ngModel)]="producto.Nombre"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
     <div class="field">
-      <label for="peso">Peso</label>
-      <input
-        id="peso"
-        type="text"
-        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
-      />
+      <select [(ngModel)]="producto.IdProveedor" name="Proveedores" id="Proveedores" class="mx-2">
+        <option *ngFor="let proveedor of proveedores" value="{{proveedor.ID}}">{{proveedor.Nombre}}</option>
+      </select>
     </div>
     <div class="field">
-      <label for="costo">Costo</label>
+      <label for="costo">Fecha de caducidad</label>
       <input
         id="costo"
+        type="date"
+        [(ngModel)]="producto.FechaDeCaducidad"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="descripcion">Cantidad</label>
+      <input
+        id="descripcion"
         type="text"
+        [(ngModel)]="producto.Cantidad"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="descripcion">Peso unitario</label>
+      <input
+        id="descripcion"
+        type="text"
+        [(ngModel)]="producto.PesoUnitario"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="descripcion">Costo Unitario</label>
+      <input
+        id="descripcion"
+        type="text"
+        [(ngModel)]="producto.CostoUnitario"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="descripcion">Precio de venta</label>
+      <input
+        id="descripcion"
+        type="text"
+        [(ngModel)]="producto.PrecioDeVenta"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
@@ -34,11 +68,20 @@
       <input
         id="descripcion"
         type="text"
+        [(ngModel)]="producto.Descripcion"
         class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
       />
     </div>
+    <div class="field">
+      <select [(ngModel)]="producto.EstadoProducto" name="Proveedores" id="Proveedores" class="mx-2">
+        <option  [value]="1">Bueno</option>
+        <option  [value]="0.8">DetalleMenores</option>
+        <option  [value]="0.4">DetalleMayores</option>
+        <option  [value]="0">Perdida</option>
+      </select>
+    </div>
   </div>
   <div class="mx-auto">
-    <button type="submit" pButton label="Agregar"></button>
+    <button type="submit" pButton label="Agregar" (click)="agregar()"></button>
   </div>
-</form>
+</div>

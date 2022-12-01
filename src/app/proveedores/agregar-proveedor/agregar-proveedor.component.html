@@ -1,0 +1,29 @@
+<h1>Agregar proveedor</h1>
+<div
+  class="flex card justify-content-center align-items-center flex-column"
+  style="height: 85%"
+>
+  <div>
+    <div class="field">
+      <label for="Nombre">Nombre</label>
+      <input
+        id="Nombre"
+        type="text"
+        [(ngModel)]="proveedor.Nombre"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field">
+      <label for="NumeroContacto">Numero de contacto</label>
+      <input
+        id="NumeroContacto"
+        type="text"
+        [(ngModel)]="proveedor.NumeroContacto"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+  </div>
+  <div class="mx-auto">
+    <button type="submit" pButton label="Agregar" (click)="agregar()"></button>
+  </div>
+</div>
